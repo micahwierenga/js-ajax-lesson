@@ -32,11 +32,11 @@ AJAX (Asynchronous JavaScript and XML) is a method of building interactive appli
 
 > **Example:** A weather forecasting site could display local conditions on one side of the page as soon as a user finishes typing in a zip code. The temperature could also refresh every minute, without the user having to hit a refresh button.
 
-In general the process looks like this – use JavaScript on the client side to hit an API (without reloading a page), then use the pure data you get back to manipulate the DOM somehow if you need to. This DOM manipulation can take the form of rendering a template or even something as simple as changing a number on the page.
+In general the process looks like this: Use JavaScript on the client side to hit an API (without reloading a page), then use the pure data you get back to manipulate the DOM somehow if needed. This DOM manipulation can take the form of rendering a template or even something as simple as changing a number on the page.
 
 ### Advantages
 
-- __Faster__ - This is the most obvious reason for using to AJAX on your front-end: AJAX allows easier and quicker interaction between user and website as pages are not reloaded for content to be displayed.  The server doesn't have to get data, render HTML, and then spit it out, it just has to get data and your already-loaded front-end does the rest.
+- __Faster__ - This is the most obvious reason for using to AJAX on your front-end: AJAX allows easier and quicker interaction between user and website as pages are not reloaded for content to be displayed. The server doesn't have to get data, render HTML, and then spit it out, it just has to get data and your already-loaded front-end does the rest.
 
 - __Compact__ - With AJAX, several application features can be handled using a single web page. That means we modularize our app into smaller bits, and it becomes easier to work on.
 
@@ -51,18 +51,13 @@ In general the process looks like this – use JavaScript on the client side to 
 
 - __You have to consider the UX even more__ - While UX is crucial for _any_ application, the fact that a page doesn't refresh means you have to be even more considerate of what a user is experiencing. If something in your Javascript goes wrong, your AJAX breaks, and you don't have failsafes thoughtfully built in, your user might be clicking a button and seeing absolutely nothing happen. Most common users won't have their consoles open to notice any errors.
 
-### Why are we learning it?
-As you're learning how to build APIs on the server side, you need to start learning how to consume your APIs on the client side.
-
-While we're going to be tackling some advanced front-end frameworks in the next unit, you, as a junior full-stack developer, need to be able to do something awesome with the APIs you're learning to make. So we're going to tackle the basics and build on them even further, later.
-
 <!--11:15 5 minutes -->
 
 ## Setup - Codealong
 
-While we're still learning the ins-and-outs of building APIs, let's use an already-made API for today. We'll use one that works a lot like Mongo and Express (coming soon!) and comes with RESTful resources out of the box.
+While we're still learning the ins-and-outs of building APIs, let's use an already-made API for today, which comes with RESTful resources out of the box.
 
-This handy thing lives at https://ga-cat-rescue.herokuapp.com/api/cats – it's a simple dummy data service that'll let us do GETs & POSTs quickly.
+This handy thing lives at https://ga-cat-rescue.herokuapp.com/api/cats. It's a simple dummy data service that'll let us do GETs & POSTs quickly.
 
 While you're at it, in the starter-code folder, we've got a super basic index and a CSS file to get started. Nothing fancy.
 
@@ -70,9 +65,9 @@ Open up your `index.html` in a browser, and you'll see:
 
 <img width="752" src="assets/catRescue.png">
 
-Make sure to open your console - we're going to be working with it quite a bit.
+Make sure to open your console because we're going to be working with it quite a bit.
 
-Now, we've set a few things up for you. Besides the beautiful layout, we have a form with an input and a textarea. We will be tying this form in later, but for now all we need is our console.
+Now, a few things are set up for you. Besides the layout, we have a form with an input and a textarea. We will be tying this form in later, but for now all we need is our console.
 
 We've also already included jQuery, though we won't use that for the first few minutes.
 
@@ -89,14 +84,14 @@ Open up your browser and the console. We're gonna start with old-school JavaScri
 _**Note:** You might want to write the code out in Sublime first and then copy it across to your console as it is easier to change typos._
 
 ```js
-  var request = new XMLHttpRequest();
+  let request = new XMLHttpRequest();
   request.open('GET', 'https://ga-cat-rescue.herokuapp.com/api/cats', true);
 
   request.onload = function() {
     if (request.status >= 200 && request.status < 400) {
       // Success!
-      var resp = request.responseText;
-      console.log(resp);
+      let response = request.responseText;
+      console.log(response);
     } else {
       // We reached our target server, but it returned an error
       console.log('Uh oh, an error on the server side');
@@ -115,9 +110,9 @@ Let's walk through this for a second. AJAX uses HTTP to request XML (or JSON), s
 
 According to the documentation, `request.open` takes 3 arguments - `method`,`url`, and `async`.
 
-Method matches our HTTP verb, URL is the path we are hitting, and async is just asking if it should perform the function asynchronously - by now, we have a basic idea about what that means.
+Method matches our HTTP verb, URL is the path we are hitting, and async is just asking if it should perform the function asynchronously, which we have a basic idea about now.
 
-Then, of course, we've got a function that runs if the requests works, and another if it doesn't. Just `console.log` for now.
+Then, of course, we've got a function that runs if the request works, and another if it doesn't. Just `console.log` for now.
 
 Finally, we send our request and see what happens. In this instance, we get back an array of cats.
 
@@ -127,14 +122,14 @@ Finally, we send our request and see what happens. In this instance, we get back
 
 #### jQuery GET Requests
 
-While it's good to have seen the straight old-school Vanilla JS way of doing it, we've got a lot of libraries these days that are designed to get you there faster - jQuery is one of those libraries.
+While it's good to have seen the straight old-school vanilla JS way of doing it, we've got a lot of libraries these days that are designed to get you there faster. jQuery is one of those libraries.
 
 Since we've already included jQuery in our HTML's head, let's try doing the same AJAX GET request with jQuery, together.
 
-If you hit `cmd+k` in your browser console, it'll clear it to start fresh.
+If you hit `cmd + k`/`ctrl + k` in your browser console, it'll clear it to start fresh.
 
 ```js
-  var ajax = $.get('https://ga-cat-rescue.herokuapp.com/api/cats');
+  let ajax = $.get('https://ga-cat-rescue.herokuapp.com/api/cats');
 ```
 
 Let's look at what our `ajax` variable holds now.
@@ -151,22 +146,22 @@ That's some awesome info. What's this `responseText`? Looks useful:
   ajax.responseText
 ```
 
-Well isn't that just exactly what we need? How handy!
+This is exactly what we need!
 
 What did this do? Without refreshing the page, we hit an external API – a totally different URL that's rendering JSON data instead of views – and brought that data back into our page.
 
 ### A little more programmatically now
 
-While that's great, it's dangerously asynchronous. How do we build this so that it `console.log`'s the response when an AJAX request actually succeeds, instead of right after it runs in the console?
+While that's great, it's dangerously asynchronous. How do we build this so that it console.logs the response when an AJAX request actually succeeds, instead of right after it runs in the console?
 
 ```js
-  var ajax = $.get('https://ga-cat-rescue.herokuapp.com/api/cats')
+  let ajax = $.get('https://ga-cat-rescue.herokuapp.com/api/cats')
     .done(function(data){
       console.log(data);
     });
 ```
 
-Try that out. If there's any luck, our connection will be a little slow, and you'll see the pause between when we hit enter & when it spits out our JSON result.
+Try that out. If there's any luck, our connection will be a little slow, and you'll see the pause between when we hit enter and when it spits out our JSON result.
 
 In jQuery's documentation you can find all the chain-able callback function possibilities – the three you'll probably use a lot are `.done`, `.fail`, and `.always`.
 
@@ -179,12 +174,12 @@ Now, using your console, I want to you to try a few more API tasks on this endpo
 - Get a single cat and spit out the JSON collection in the console
     - Hint: What might we add to the URL to get a `Show` route for a specific `id`?
 - Use the more generic [$.ajax](http://api.jquery.com/jquery.ajax/) to do the same request
-- Modify that cat by changing its name\*
+- Modify that cat by changing its name
     - Hint: What verb would we use to `Update` something?
-- Add a new cat to the list with a name and a note\*
+- Add a new cat to the list with a name and a note
     - Hint: What verb would we use to `Create` something?
 
-\* First try this with Postman, then check the documentation on these verbs for jQuery.  In order to send data you will need to do two things.  First, you will need to create an object (using JSON).  Second, you will need to convert it to a string.
+First try this with Postman, then check the documentation on these verbs for jQuery. In order to send data you will need to do two things. First, you will need to create an object (using JSON). Second, you will need to convert it to a string.
 
 <!--12:10 10 minutes -->
 ## Conclusion (5 mins)
