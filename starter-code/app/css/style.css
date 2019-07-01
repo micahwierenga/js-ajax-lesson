@@ -7,7 +7,7 @@ body {
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
-  background: #81e7db;
+  background: #33ccff;
 }
 
 h1 {
@@ -22,6 +22,10 @@ h1:before {
   font-size: 1.8rem;
   margin: 2rem 0 -1rem 0;
   display: block;
+}
+
+table, tr, td {
+  border: 1px solid black;
 }
 
 form, form input {
@@ -51,8 +55,34 @@ form input[type=submit]:hover{
   top: -1px;
 }
 
+form textarea {
+  width: 200px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  height: 50px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
 ul {
   text-align: left;
   max-width: 300px;
   margin: 2rem auto;
+}
+
+#cat-name {
+  width: 178px;
+  border: none;
+}
+
+#cats {
+  margin-top: 20px;
+}
+
+.delete-cat {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 14px;
 }
