@@ -5,19 +5,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>GA Cat Rescue</title>
         <link rel="stylesheet" href="css/style.css">
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     </head>
     <body>
       <h1>Cat Rescue</h1>
       <form id="new-cat">
-        <input type="text" name='cat[name]' id="cat-name" placeholder="What is the cat's name?" value="Mr. Kittums">
-        <textarea name="cat[note]" id="cat-note" placeholder="Tell us a bit about this cat"></textarea>
-        <input type="submit" value='Save My Cat'>
+        <input type="text" name='cat[name]' id="cat-name" placeholder="Enter cat name"><br>
+        <textarea name="cat[note]" id="cat-note" placeholder="Tell us about this cat"></textarea><br>
+        <input type="submit" value='Save My Cat' id="saveCat">
       </form>
-      <ul id="cats">
-      </ul>
-      <script src="app.js"></script>
+      <table id="cats">
+      </table>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/app.js"></script>
     </body>
-
 </html>
